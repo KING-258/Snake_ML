@@ -113,21 +113,21 @@ class LearnSnake:
             reward = -10  # Dead
         self.survived += 1    
         return self.get_state(), reward, self.game_close
-    def run_game(self, episode):
-        filename = f"Q_table_results/{episode}.pickle"
-        with open(filename, 'rb') as file:
-            table = pickle.load(file)
-        current_length = 2
-        steps_unchanged = 0
-        while not self.game_over():
-            state = self.get_state()
-            action = np.argmax(table[state])
-            if steps_unchanged == 1000:
-                break
-            self.step(action)
-            if self.snake_length != current_length:
-                steps_unchanged = 0
-                current_length = self.snake_length
-            else:
-                steps_unchanged += 1
-        return self.snake_length
+    # def run_game(self, episode):
+    #     filename = f"Q_table_results/{episode}.pickle"
+    #     with open(filename, 'rb') as file:
+    #         table = pickle.load(file)
+    #     current_length = 2
+    #     steps_unchanged = 0
+    #     while not self.game_over():
+    #         state = self.get_state()
+    #         action = np.argmax(table[state])
+    #         if steps_unchanged == 1000:
+    #             break
+    #         self.step(action)
+    #         if self.snake_length != current_length:
+    #             steps_unchanged = 0
+    #             current_length = self.snake_length
+    #         else:
+    #             steps_unchanged += 1
+    #     return self.snake_length
