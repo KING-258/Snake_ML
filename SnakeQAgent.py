@@ -16,7 +16,7 @@ class SnakeQAgent:
         self.scores = []
         self.survived = []
     def choose_action(self, state):
-        if random.random() < self.exp_rate:  # Not absolutely sure about this one
+        if random.random() < self.exp_rate:
             return random.choice([0, 1, 2, 3])
         return np.argmax(self.q_table[state])
     def train(self):
